@@ -1,1 +1,19 @@
 
+{
+    "chain_name": "cosvm",
+    "api": ["https://api.cosvm.net"],
+    "rpc": ["https://cvm.cosvm.net"],
+    "snapshot_provider": "",
+    "sdk_version": "0.45.8",
+    "coin_type": "60",
+    "min_tx_fee": "5000",
+    "addr_prefix": "cvm",
+    "logo": "/logos/cvm.png",
+    "assets": [{
+        "base": "ucvm",
+        "symbol": "CVM",
+        "exponent": "6",
+        "coingecko_id": "cvm", 
+        "logo": "/logos/cvm.png"
+    }]
+}

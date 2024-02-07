@@ -69,7 +69,7 @@ function selected(route: any, nav: NavLink) {
         <RouterLink to="/" class="flex items-center">
           <img class="w-10 h-10" src="../../assets/logo.svg" />
           <h1 class="flex-1 ml-3 text-2xl font-semibold dark:text-white">
-            ChainXpress
+            Ping.pub
           </h1>
         </RouterLink>
         <div
@@ -102,7 +102,20 @@ function selected(route: any, nav: NavLink) {
           <div
             class="collapse-title !py-0 px-4 flex items-center cursor-pointer hover:bg-gray-100 dark:hover:bg-[#373f59]"
           >
-            
+            <Icon
+              v-if="item?.icon?.icon"
+              :icon="item?.icon?.icon"
+              class="text-xl mr-2"
+              :class="{
+                'text-yellow-500': item?.title === 'Favorite',
+                'text-blue-500': item?.title !== 'Favorite',
+              }"
+            />
+            <img
+              v-if="item?.icon?.image"
+              :src="item?.icon?.image"
+              class="w-6 h-6 rounded-full mr-3"
+            />
             <div
               class="text-base capitalize flex-1 text-gray-700 dark:text-gray-200 whitespace-nowrap"
             >
@@ -144,45 +157,21 @@ function selected(route: any, nav: NavLink) {
                   'border border-gray-300 bg-white': selected($route, el),
                 }"
                 />
-             
+                <div
+                  class="text-base capitalize text-gray-500 dark:text-gray-300"
+                  :class="{
+                    '!text-white': selected($route, el),
+                  }"
+                >
+                  {{ item?.title === 'Favorite' ? el?.title : $t(el?.title) }}
+                </div>
               </RouterLink>
             </div>
           </div>
         </div>
 
-        <RouterLink
-          v-if="isNavLink(item)"
-          :to="item?.to"
-          @click="sidebarShow = false"
-          class="cursor-pointer rounded-lg px-4 flex items-center py-2 hover:bg-gray-100 dark:hover:bg-[#373f59]"
-        >
-          <Icon
-            v-if="item?.icon?.icon"
-            :icon="item?.icon?.icon"
-            class="text-xl mr-2"
-            :class="{
-              'text-yellow-500': item?.title === 'Favorite',
-              'text-blue-500': item?.title !== 'Favorite',
-            }"
-          />
-          <img
-            v-if="item?.icon?.image"
-            :src="item?.icon?.image"
-            class="w-6 h-6 rounded-full mr-3 border border-blue-100"
-          />
-          <div
-            class="text-base capitalize flex-1 text-gray-700 dark:text-gray-200 whitespace-nowrap"
-          >
-            {{ item?.title }}
-          </div>
-          <div
-            v-if="item?.badgeContent"
-            class="badge badge-sm text-white border-none" 
-            :class="item?.badgeClass"
-          >
-            {{ item?.badgeContent }}
-          </div>
-        </RouterLink>
+    
+        
         <div
           v-if="isNavTitle(item)"
           class="px-4 text-sm text-gray-400 pb-2 uppercase"
@@ -190,16 +179,18 @@ function selected(route: any, nav: NavLink) {
           {{ item?.heading }}
         </div>
       </div>
-      <div class="px-2">
-        
       
-        
-        
+      <div class="px-2">
+    
+      
+     
+       
 
-          <div class="px-4 text-sm pt-2 text-gray-400 pb-2 uppercase">
+        <div class="px-4 text-sm pt-2 text-gray-400 pb-2 uppercase">
             Tools
-          </div>
-          <RouterLink to="/wallet/suggest"
+        </div>
+          
+        <RouterLink to="/wallet/suggest"
           class="py-2 px-4 flex items-center cursor-pointer rounded-lg hover:bg-gray-100 dark:hover:bg-[#373f59]"
           >
             <Icon icon="mdi:frequently-asked-questions" class="text-xl mr-2" />
@@ -225,7 +216,7 @@ function selected(route: any, nav: NavLink) {
         </a>
         <a
           v-if="showDiscord"
-          href="https://discord.com/invite/CvmSSSr6WD"
+          href="https://discord.com/invite/CVMYVSr6GW"
           target="_blank"
           class="py-2 px-4 flex items-center rounded-lg cursor-pointer hover:bg-gray-100 dark:hover:bg-[#373f59]"
         >
@@ -237,7 +228,7 @@ function selected(route: any, nav: NavLink) {
           </div>
         </a>
         <a
-          href="https://cosvm.network/company/faq"
+          href="https://cosvm.network/faqs"
           target="_blank"
           class="py-2 px-4 flex items-center rounded-lg cursor-pointer hover:bg-gray-100 dark:hover:bg-[#373f59]"
         >

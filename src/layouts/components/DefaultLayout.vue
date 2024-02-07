@@ -102,20 +102,7 @@ function selected(route: any, nav: NavLink) {
           <div
             class="collapse-title !py-0 px-4 flex items-center cursor-pointer hover:bg-gray-100 dark:hover:bg-[#373f59]"
           >
-            <Icon
-              v-if="item?.icon?.icon"
-              :icon="item?.icon?.icon"
-              class="text-xl mr-2"
-              :class="{
-                'text-yellow-500': item?.title === 'Favorite',
-                'text-blue-500': item?.title !== 'Favorite',
-              }"
-            />
-            <img
-              v-if="item?.icon?.image"
-              :src="item?.icon?.image"
-              class="w-6 h-6 rounded-full mr-3"
-            />
+            
             <div
               class="text-base capitalize flex-1 text-gray-700 dark:text-gray-200 whitespace-nowrap"
             >
@@ -157,14 +144,7 @@ function selected(route: any, nav: NavLink) {
                   'border border-gray-300 bg-white': selected($route, el),
                 }"
                 />
-                <div
-                  class="text-base capitalize text-gray-500 dark:text-gray-300"
-                  :class="{
-                    '!text-white': selected($route, el),
-                  }"
-                >
-                  {{ item?.title === 'Favorite' ? el?.title : $t(el?.title) }}
-                </div>
+             
               </RouterLink>
             </div>
           </div>

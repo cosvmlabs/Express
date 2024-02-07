@@ -157,14 +157,7 @@ function selected(route: any, nav: NavLink) {
                   'border border-gray-300 bg-white': selected($route, el),
                 }"
                 />
-                <div
-                  class="text-base capitalize text-gray-500 dark:text-gray-300"
-                  :class="{
-                    '!text-white': selected($route, el),
-                  }"
-                >
-                  {{ item?.title === 'Favorite' ? el?.title : $t(el?.title) }}
-                </div>
+               
               </RouterLink>
             </div>
           </div>

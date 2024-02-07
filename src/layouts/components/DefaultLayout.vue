@@ -129,48 +129,42 @@ function selected(route: any, nav: NavLink) {
               {{ item?.badgeContent }}
             </div>
           </div>
-          <div class="collapse-content">
-            <div v-for="(el, key) of item?.children" class="menu bg-base-100 w-full !p-0">
-              <RouterLink
-                v-if="isNavLink(el)"
-                @click="sidebarShow = false"
-                class="hover:bg-gray-100 dark:hover:bg-[#373f59] rounded cursor-pointer px-3 py-2 flex items-center"
-                :class="{
-                  '!bg-primary': selected($route, el),
-                }"
-                :to="el.to"
-              >
-                <Icon
-                  v-if="!el?.icon?.image"
-                  icon="mdi:chevron-right"
-                  class="mr-2 ml-3"
-                  :class="{
-                    'text-white':
-                      $route.path === el?.to?.path &&
-                      item?.title !== 'Favorite',
-                  }"
-                />
-                <img
-                  v-if="el?.icon?.image"
-                  :src="el?.icon?.image"
-                  class="w-6 h-6 rounded-full mr-3 ml-4 " :class="{
-                  'border border-gray-300 bg-white': selected($route, el),
-                }"
-                />
-                <div
-                  class="text-base capitalize text-gray-500 dark:text-gray-300"
-                  :class="{
-                    '!text-white': selected($route, el),
-                  }"
-                >
-                  {{ item?.title === 'Favorite' ? el?.title : $t(el?.title) }}
-                </div>
-              </RouterLink>
-            </div>
-          </div>
+       
         </div>
 
-    
+        <RouterLink
+          v-if="isNavLink(item)"
+          :to="item?.to"
+          @click="sidebarShow = false"
+          class="cursor-pointer rounded-lg px-4 flex items-center py-2 hover:bg-gray-100 dark:hover:bg-[#373f59]"
+        >
+          <Icon
+            v-if="item?.icon?.icon"
+            :icon="item?.icon?.icon"
+            class="text-xl mr-2"
+            :class="{
+              'text-yellow-500': item?.title === 'Favorite',
+              'text-blue-500': item?.title !== 'Favorite',
+            }"
+          />
+          <img
+            v-if="item?.icon?.image"
+            :src="item?.icon?.image"
+            class="w-6 h-6 rounded-full mr-3 border border-blue-100"
+          />
+          <div
+            class="text-base capitalize flex-1 text-gray-700 dark:text-gray-200 whitespace-nowrap"
+          >
+            {{ item?.title }}
+          </div>
+          <div
+            v-if="item?.badgeContent"
+            class="badge badge-sm text-white border-none" 
+            :class="item?.badgeClass"
+          >
+            {{ item?.badgeContent }}
+          </div>
+        </RouterLink>
         
         <div
           v-if="isNavTitle(item)"
